@@ -1,10 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Optional: use only if using React Router
+import { Link } from 'react-router-dom';
 import { FaShoppingBag, FaUser, FaShoppingCart } from 'react-icons/fa';
 import './Navbar.css';
 
-const Navbar = () => {
-  const cartItemCount = 3;
+const Navbar = ({ cartItems }) => {
+  // Provide a fallback to an empty array if cartItems is undefined
+  const safeCartItems = cartItems || [];
+  const cartItemCount = safeCartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
@@ -46,10 +48,14 @@ const Navbar = () => {
           <div className="d-flex align-items-center">
             <FaUser className="me-4 fs-5 text-dark" />
             <div className="position-relative">
-              <FaShoppingCart className="fs-5 text-dark" />
-              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
-                {cartItemCount}
-              </span>
+              <Link to="/cart" className="text-decoration-none text-dark">
+                <FaShoppingCart className="fs-5" />
+                {cartItemCount > 0 && (
+                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+                    {cartItemCount}
+                  </span>
+                )}
+              </Link>
             </div>
           </div>
         </div>
