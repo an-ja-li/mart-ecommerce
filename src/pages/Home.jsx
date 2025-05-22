@@ -3,6 +3,7 @@ import { serviceData } from '../data/serviceData';
 import FeatureCard from '../Compnents/FeatureCard';
 import HeroSlider from '../Compnents/HeroSlider';
 import ProductCard from '../Compnents/ProductCard';
+import Footer from '../Compnents/Footer';
 import { discoutProducts, products } from "../data/productData";
 import "./Home.css";
 
@@ -30,6 +31,11 @@ const Home = ({ cartItems, setCartItems }) => {
       item.category.toLowerCase() === "mobile" || item.category.toLowerCase() === "wireless"
   );
 
+    // Filter products for Best Sales (only sofas)
+  const sofaProducts = products.filter(
+    (item) => item.category.toLowerCase() === "sofa"
+  );
+
   return (
     <div className="home-container">
       {/* Slider Section */}
@@ -50,6 +56,8 @@ const Home = ({ cartItems, setCartItems }) => {
         ))}
       </section>
 
+
+        <div className="card">
       {/* Discount Products Section */}
       <div className="home-discount-section">
         <h2 className="home-section-title">Big Discount</h2>
@@ -81,6 +89,25 @@ const Home = ({ cartItems, setCartItems }) => {
           ))}
         </div>
       </div>
+
+      {/* Best Sales Section (only sofas) */}
+        <div className="home-best-sales-section">
+          <h2 className="home-section-title">Best Sales</h2>
+          <div className="home-product-grid">
+            {sofaProducts.map((item) => (
+              <ProductCard
+                key={item.id}
+                item={item}
+                addToCart={addToCart}
+                addToWishlist={addToWishlist}
+              />
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      <Footer />
     </div>
   );
 };
