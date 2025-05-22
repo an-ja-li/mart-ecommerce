@@ -6,31 +6,39 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 
 import Navbar from "./Compnents/Navbar";
-// import Footer from "./Compnents/Footer";
-// import HomeSlider from "./Compnents/HomeSlider";
-
+import ProductId from './pages/ProductId';
 import Home from './pages/Home';
 import Product from './pages/Product';
 import Cart from './pages/Cart';
+
+
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
 
   return (
     <Router>
-      {/* ✅ Pass cartItems to Navbar */}
+      {/* ✅ Navbar visible on all pages */}
       <Navbar cartItems={cartItems} />
+
+   
 
       <Routes>
         <Route path="/" element={<Home />} />
-        
-        {/* ✅ Pass cart state to Product page */}
+
+        {/* ✅ Pass cart state to Product listing page */}
         <Route
           path="/product"
           element={<Product cartItems={cartItems} setCartItems={setCartItems} />}
         />
-        
-        {/* ✅ Cart already receives props correctly */}
+
+        {/* ✅ Product details page */}
+        <Route
+          path="/product/:id"
+          element={<ProductId cartItems={cartItems} setCartItems={setCartItems} />}
+        />
+
+        {/* ✅ Cart page */}
         <Route
           path="/cart"
           element={<Cart cartItems={cartItems} setCartItems={setCartItems} />}

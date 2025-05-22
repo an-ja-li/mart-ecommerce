@@ -3,10 +3,11 @@ import { products } from "../data/productData";
 import tableBg from '../Images/table.jpg';
 import './Product.css';
 import { Search } from 'lucide-react';
+import ProductCard from '../Compnents/ProductCard';
 
 const Product = ({ cartItems, setCartItems }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [categoryFilter, setCategoryFilter] = useState('sofa'); // Default category
+  const [categoryFilter, setCategoryFilter] = useState('sofa');
 
   const addToCart = (product) => {
     const existing = cartItems.find(item => item.id === product.id);
@@ -71,17 +72,7 @@ const Product = ({ cartItems, setCartItems }) => {
 
       <div className="product-grid">
         {filteredProducts.map((item) => (
-          <div key={item.id} className="product-card">
-            <img src={item.imgUrl} alt={item.productName} />
-            <h3>{item.productName}</h3>
-            <div className="stars">
-              {"★".repeat(Math.round(item.avgRating))}
-            </div>
-            <p>
-              <span className="price">${item.price}</span>
-              <button className="add-button" onClick={() => addToCart(item)}>＋</button>
-            </p>
-          </div>
+          <ProductCard key={item.id} item={item} addToCart={addToCart} />
         ))}
       </div>
     </div>
