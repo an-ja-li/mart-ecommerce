@@ -25,15 +25,16 @@ const ProductCard = ({ item, addToCart, showDiscount = false, discount = 0, addT
         </button>
       )}
 
-      <img src={item.imgUrl} alt={item.productName} />
+      <img src={item.imgUrl} alt={item.productName} className="product-img" />
       <h3>{item.productName}</h3>
       <div className="stars">{"★".repeat(Math.round(item.avgRating))}</div>
-      <p>
+
+      <p className="price-add-wrapper">
         <span className="price">${item.price}</span>
         <button
           className="add-button"
           onClick={(e) => {
-            e.stopPropagation(); // Prevent navigation when clicking add button
+            e.stopPropagation();
             addToCart(item);
           }}
         >

@@ -1,14 +1,14 @@
-import React, { useState} from 'react';
+import React from 'react';
 import { serviceData } from '../data/serviceData';
-import FeatureCard from '../Compnents/FeatureCard'; // Fixed folder name
+import FeatureCard from '../Compnents/FeatureCard';
 import HeroSlider from '../Compnents/HeroSlider';
-import ProductCard from '../Compnents/ProductCard';  // Added ProductCard import
+import ProductCard from '../Compnents/ProductCard';
 import { discoutProducts, products } from "../data/productData";
 import "./Home.css";
 
 const Home = ({ cartItems, setCartItems }) => {
   // Simple addToCart
-   const addToCart = (product) => {
+  const addToCart = (product) => {
     const existing = cartItems.find(item => item.id === product.id);
     if (existing) {
       setCartItems(cartItems.map(item =>
@@ -18,13 +18,16 @@ const Home = ({ cartItems, setCartItems }) => {
       setCartItems([...cartItems, { ...product, quantity: 1 }]);
     }
   };
+
   // Placeholder for wishlist functionality
   const addToWishlist = (product) => {
     console.log("Added to wishlist:", product.productName);
   };
 
+  // Filter products for New Arrivals (mobile + wireless)
   const mobileProducts = products.filter(
-    (item) => item.category.toLowerCase() === "mobile"|| item.category === "wireless"
+    (item) =>
+      item.category.toLowerCase() === "mobile" || item.category.toLowerCase() === "wireless"
   );
 
   return (
@@ -69,11 +72,12 @@ const Home = ({ cartItems, setCartItems }) => {
         <h2 className="home-section-title">New Arrivals</h2>
         <div className="home-new-arrivals-grid">
           {mobileProducts.map((item) => (
-            <div key={item.id} className="product-card">
-              <img src={item.imgUrl} alt={item.productName} className="product-img" />
-              <h4>{item.productName}</h4>
-              <p>${item.price}</p>
-            </div>
+            <ProductCard
+              key={item.id}
+              item={item}
+              addToCart={addToCart}
+              addToWishlist={addToWishlist}
+            />
           ))}
         </div>
       </div>
