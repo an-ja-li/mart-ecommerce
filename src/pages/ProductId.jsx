@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { products } from '../data/productData';
 import ProductCard from '../Compnents/ProductCard';
+import Footer from '../Compnents/Footer';
 import './ProductId.css';
 import tableImage from '../Images/table.jpg';
 
@@ -95,7 +96,10 @@ const ProductId = ({ cartItems, setCartItems }) => {
           <ProductCard key={item.id} item={item} addToCart={(item) => addToCart(item, 1)} />
         ))}
       </div>
-    </div>
+
+     <Footer />
+    </div>  
+   
   );
 };
 

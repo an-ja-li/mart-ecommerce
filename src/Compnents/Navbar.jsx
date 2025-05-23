@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { IoBag } from "react-icons/io5";
 import { FaShoppingBag, FaUser, FaShoppingCart } from 'react-icons/fa';
 import './Navbar.css';
 
@@ -13,7 +14,7 @@ const Navbar = ({ cartItems }) => {
       <div className="container-fluid">
         {/* Logo */}
         <Link to="/" className="navbar-brand d-flex align-items-center">
-          <FaShoppingBag className="me-2 fs-4 " />
+          <IoBag className="me-2 fs-4 " />
           <span className="fw-bold text-dark">MART</span>
         </Link>
 

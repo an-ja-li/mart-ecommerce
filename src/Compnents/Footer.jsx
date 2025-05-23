@@ -1,4 +1,5 @@
 import React from "react";
+import { IoBag } from "react-icons/io5";
 
 function Footer() {
   return (
@@ -9,7 +10,7 @@ function Footer() {
           {/* Column 1 */}
           <div className="col-md-2 mb-4">
             <h5 className="fw-bold mb-3">
-              <i className="bi bi-bag-fill me-2"></i> Mart
+              <IoBag /> Mart
             </h5>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
