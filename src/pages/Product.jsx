@@ -3,6 +3,7 @@ import { products } from "../data/productData";
 import tableBg from '../Images/table.jpg';
 import './Product.css';
 import { Search } from 'lucide-react';
+import Footer from '../Compnents/Footer';
 import ProductCard from '../Compnents/ProductCard';
 
 const Product = ({ cartItems, setCartItems }) => {
@@ -24,10 +25,9 @@ const Product = ({ cartItems, setCartItems }) => {
     });
   };
 
-  // Optional: Placeholder for wishlist functionality
   const addToWishlist = (product) => {
     console.log('Added to wishlist:', product);
-    // Extend this later to update a wishlist array in state/context
+    // Future: update wishlist state or context
   };
 
   const filteredProducts = useMemo(() => {
@@ -47,15 +47,12 @@ const Product = ({ cartItems, setCartItems }) => {
 
   return (
     <div className="product-section">
+
       {/* Banner */}
-      <div className="product-hero"
-        style={{
-          backgroundImage: `url(${tableBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <h2 className="product-title">Product</h2>
+      <div className="product-banner" style={{ backgroundImage: `url(${tableBg})` }}>
+        <div className="overlay">
+          <h1 className="banner-title">Explore {categoryFilter} Products</h1>
+        </div>
       </div>
 
       {/* Filters */}
@@ -95,6 +92,8 @@ const Product = ({ cartItems, setCartItems }) => {
           />
         ))}
       </div>
+
+       <Footer />
     </div>
   );
 };

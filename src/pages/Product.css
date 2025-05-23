@@ -32,6 +32,8 @@ select{
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
+  margin-left: 40px;
+   margin-right: 40px;
   gap: 0.5rem;
   flex-wrap: wrap;
 }
@@ -130,4 +132,40 @@ select{
 
 .add-button:hover {
   background-color: #ddd;
+}
+
+
+
+
+/* Banner */
+.product-banner {
+  width: 100vw; /* Full viewport width */
+  margin: 0; /* Remove any default margin */
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.product-banner .overlay {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+}
+
+.banner-title {
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+body, .product-section {
+  margin: 0;
+  padding: 0;
 }
