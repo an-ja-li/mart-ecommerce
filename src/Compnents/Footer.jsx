@@ -3,7 +3,7 @@ import { IoBag } from "react-icons/io5";
 
 function Footer() {
   return (
-    <footer  style={{ backgroundColor: "#1a4870" }}className=" text-white pt-5 pb-4">
+    <footer  style={{ backgroundColor: "#0d2a52" }}className=" text-white pt-5 pb-4">
       <div className="container">
         <div className="row">
 

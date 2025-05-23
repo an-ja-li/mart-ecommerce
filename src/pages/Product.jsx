@@ -8,7 +8,7 @@ import ProductCard from '../Compnents/ProductCard';
 
 const Product = ({ cartItems, setCartItems }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [categoryFilter, setCategoryFilter] = useState('sofa');
+  const [categoryFilter, setCategoryFilter] = useState('sofa');  // Default empty - show all
 
   const addToCart = (product) => {
     setCartItems((prevItems) => {
@@ -51,7 +51,9 @@ const Product = ({ cartItems, setCartItems }) => {
       {/* Banner */}
       <div className="product-banner" style={{ backgroundImage: `url(${tableBg})` }}>
         <div className="overlay">
-          <h1 className="banner-title">Explore {categoryFilter} Products</h1>
+          <h1 className="banner-title">
+            Explore {categoryFilter ? categoryFilter.charAt(0).toUpperCase() + categoryFilter.slice(1) : 'All'} Products
+          </h1>
         </div>
       </div>
 
@@ -62,6 +64,7 @@ const Product = ({ cartItems, setCartItems }) => {
           className="dropdown"
           onChange={(e) => setCategoryFilter(e.target.value)}
         >
+          <option value="sofa">Filter By Category   |</option>
           <option value="sofa">Sofa</option>
           <option value="chair">Chair</option>
           <option value="mobile">Mobile</option>
@@ -93,7 +96,7 @@ const Product = ({ cartItems, setCartItems }) => {
         ))}
       </div>
 
-       <Footer />
+      <Footer />
     </div>
   );
 };
