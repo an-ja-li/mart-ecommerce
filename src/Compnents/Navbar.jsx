@@ -1,24 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { IoBag } from "react-icons/io5";
-import { FaShoppingBag, FaUser, FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import './Navbar.css';
 
 const Navbar = ({ cartItems }) => {
-  // Provide a fallback to an empty array if cartItems is undefined
   const safeCartItems = cartItems || [];
-  const cartItemCount = safeCartItems.reduce((total, item) => total + item.quantity, 0);
+
+  // ✅ Calculate total quantity
+const cartItemCount = safeCartItems.length;
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
       <div className="container-fluid">
         {/* Logo */}
         <Link to="/" className="navbar-brand d-flex align-items-center">
-          <IoBag className="me-2 fs-4 " />
+          <IoBag className="me-2 fs-4" />
           <span className="fw-bold text-dark">MART</span>
         </Link>
 
-        {/* Toggler (mobile) */}
+        {/* Toggler for mobile */}
         <button
           className="navbar-toggler"
           type="button"
@@ -31,14 +32,14 @@ const Navbar = ({ cartItems }) => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Nav Items */}
+        {/* Nav Links */}
         <div className="collapse navbar-collapse justify-content-end" id="navbarContent">
           <ul className="navbar-nav align-items-center me-3">
             <li className="nav-item mx-2">
               <Link to="/" className="nav-link fw-semibold">Home</Link>
             </li>
             <li className="nav-item mx-2">
-              <Link to="/Product" className="nav-link fw-semibold">Shop</Link>
+              <Link to="/product" className="nav-link fw-semibold">Shop</Link>
             </li>
             <li className="nav-item mx-2">
               <Link to="/cart" className="nav-link fw-semibold">Cart</Link>

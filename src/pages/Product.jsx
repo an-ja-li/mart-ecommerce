@@ -8,7 +8,7 @@ import ProductCard from '../Compnents/ProductCard';
 
 const Product = ({ cartItems, setCartItems }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [categoryFilter, setCategoryFilter] = useState('sofa');  // Default empty - show all
+  const [categoryFilter, setCategoryFilter] = useState('sofa'); // Default category
 
   const addToCart = (product) => {
     setCartItems((prevItems) => {
@@ -27,7 +27,6 @@ const Product = ({ cartItems, setCartItems }) => {
 
   const addToWishlist = (product) => {
     console.log('Added to wishlist:', product);
-    // Future: update wishlist state or context
   };
 
   const filteredProducts = useMemo(() => {
@@ -47,12 +46,11 @@ const Product = ({ cartItems, setCartItems }) => {
 
   return (
     <div className="product-section">
-
       {/* Banner */}
       <div className="product-banner" style={{ backgroundImage: `url(${tableBg})` }}>
         <div className="overlay">
           <h1 className="banner-title">
-            Explore {categoryFilter ? categoryFilter.charAt(0).toUpperCase() + categoryFilter.slice(1) : 'All'} Products
+            Explore {categoryFilter.charAt(0).toUpperCase() + categoryFilter.slice(1)} Products
           </h1>
         </div>
       </div>
@@ -64,7 +62,7 @@ const Product = ({ cartItems, setCartItems }) => {
           className="dropdown"
           onChange={(e) => setCategoryFilter(e.target.value)}
         >
-          <option value="sofa">Filter By Category   |</option>
+          <option value="sofa">Filter By Category |</option>
           <option value="sofa">Sofa</option>
           <option value="chair">Chair</option>
           <option value="mobile">Mobile</option>
