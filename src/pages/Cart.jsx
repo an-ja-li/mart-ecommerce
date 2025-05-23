@@ -1,5 +1,7 @@
 import React from 'react';
+import Footer from '../Compnents/Footer';
 import './Cart.css';
+
 
 const Cart = ({ cartItems, setCartItems }) => {
   const updateQty = (id, type) => {
@@ -19,6 +21,7 @@ const Cart = ({ cartItems, setCartItems }) => {
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
+    <div>
     <div className="cart-container">
       <div className="cart-items">
         {cartItems.map(item => (
@@ -41,7 +44,10 @@ const Cart = ({ cartItems, setCartItems }) => {
         <p>Total Price:</p>
         <h3>${totalPrice.toFixed(2)}</h3>
       </div>
+        </div>
+      <Footer />
     </div>
+    
   );
 };
 

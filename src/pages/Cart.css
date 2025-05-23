@@ -1,36 +1,113 @@
 .cart-container {
   display: flex;
-  gap: 2rem;
-  padding: 2rem;
-  background: #f8fbfe;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 3rem 4rem; /* Increased padding */
+  background-color: #f6fbff;
+  gap: 3rem;
+  flex-wrap: wrap;
 }
+
 .cart-items {
   flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
-.cart-summary {
-  flex: 1;
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px #e0e0e0;
-}
+
 .cart-card {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  background: white;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem 3rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  gap: 3rem; /* Increased gap between image, name, and price */
+  flex-wrap: wrap;
 }
+
 .cart-card img {
-  width: 100px;
+  width: 130px;
+  height: auto;
+  object-fit: contain;
 }
-.qty-controls button, .remove-btn {
-  margin: 0 0.25rem;
-  padding: 0.5rem;
-  border: none;
-  background: #eef2f5;
-  cursor: pointer;
+
+.cart-card h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1d1d1d;
+}
+
+.cart-card p {
+  color: #555;
   font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.cart-card strong {
+  color: #0d2a52;
+}
+
+.qty-controls {
+  display: flex;
+  gap: 1.5rem; /* Increased spacing between + and - buttons */
+  align-items: center;
+}
+
+.qty-controls button {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  font-size: 1.3rem;
+  border: 1px solid #d1d1d1;
+  background-color: #f8fbff;
+  color: #0d2a52;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.qty-controls button:hover {
+  background-color: #e3eefc;
+}
+
+.remove-btn {
+  font-size: 1.8rem;
+  color: black;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 24px;
+  top: 0px;
+}
+
+.cart-summary {
+  flex: 1;
+  min-width: 280px;
+  background-color: white;
+  padding: 2.5rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.cart-summary h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1d3557;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.cart-summary p {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.cart-summary h3 {
+  color: #0d2a52;
+  font-size: 2rem;
+  font-weight: bold;
 }
