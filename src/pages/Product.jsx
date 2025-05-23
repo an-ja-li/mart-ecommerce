@@ -10,14 +10,24 @@ const Product = ({ cartItems, setCartItems }) => {
   const [categoryFilter, setCategoryFilter] = useState('sofa');
 
   const addToCart = (product) => {
-    const existing = cartItems.find(item => item.id === product.id);
-    if (existing) {
-      setCartItems(cartItems.map(item =>
-        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-      ));
-    } else {
-      setCartItems([...cartItems, { ...product, quantity: 1 }]);
-    }
+    setCartItems((prevItems) => {
+      const existing = prevItems.find((item) => item.id === product.id);
+      if (existing) {
+        return prevItems.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        return [...prevItems, { ...product, quantity: 1 }];
+      }
+    });
+  };
+
+  // Optional: Placeholder for wishlist functionality
+  const addToWishlist = (product) => {
+    console.log('Added to wishlist:', product);
+    // Extend this later to update a wishlist array in state/context
   };
 
   const filteredProducts = useMemo(() => {
@@ -37,14 +47,18 @@ const Product = ({ cartItems, setCartItems }) => {
 
   return (
     <div className="product-section">
-      <div className="product-hero" style={{
-        backgroundImage: `url(${tableBg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}>
+      {/* Banner */}
+      <div className="product-hero"
+        style={{
+          backgroundImage: `url(${tableBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
         <h2 className="product-title">Product</h2>
       </div>
 
+      {/* Filters */}
       <div className="product-controls">
         <select
           value={categoryFilter}
@@ -70,9 +84,15 @@ const Product = ({ cartItems, setCartItems }) => {
         </div>
       </div>
 
+      {/* Product Cards */}
       <div className="product-grid">
         {filteredProducts.map((item) => (
-          <ProductCard key={item.id} item={item} addToCart={addToCart} />
+          <ProductCard
+            key={item.id}
+            item={item}
+            addToCart={addToCart}
+            addToWishlist={addToWishlist}
+          />
         ))}
       </div>
     </div>

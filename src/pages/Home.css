@@ -55,7 +55,7 @@ padding: 2rem;
   position: absolute;
   top: 16px;
   left: 16px;
-  background-color: #0d3fc7;
+  background-color: #1a4870;
   color: white;
   padding: 4px 10px;
   font-size: 12px;
@@ -69,6 +69,7 @@ padding: 2rem;
   top: 16px;
   right: 16px;
   background: white;
+  color: gray; /* Ensure initial color */
   border: none;
   font-size: 18px;
   color: gray;
@@ -80,7 +81,11 @@ padding: 2rem;
 }
 
 .product-card:hover .wishlist-icon {
+  
   display: block;
+}
+.wishlist-icon:active:focus {
+  color: red; /* Prevent color change on click */
 }
 
 /* Product Image */
@@ -126,28 +131,30 @@ padding: 2rem;
 }
 
 /* Add Button */
+
 .add-button,
 .add-btn {
-  background-color: #f1f1f1;
+  /* Set default to hovered color */
+  color: white; 
   border: 1px solid #ccc;
   border-radius: 50%;
   font-size: 18px;
-  color: #1d1b5f;
-    margin-left: -4px; 
   width: 36px;
   height: 36px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.add-button:hover,
-.add-btn:hover {
-  background-color: red;
+
+.product-card .add-button:hover,
+.product-card .add-btn:hover {
+  background-color: #1d1b5f;
   color: white;
 }
+
 
 /* Responsive: collapse to 2 or 1 cards on smaller screens */
 @media (max-width: 992px) {

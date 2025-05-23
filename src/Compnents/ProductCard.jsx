@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaHeart } from "react-icons/fa";
 
 const ProductCard = ({ item, addToCart, showDiscount = false, discount = 0, addToWishlist }) => {
   const navigate = useNavigate();
+  const [isClicked, setIsClicked] = useState(false);
 
   if (!item) return null; // 🛡️ prevent rendering if item is undefined
 
@@ -12,18 +14,18 @@ const ProductCard = ({ item, addToCart, showDiscount = false, discount = 0, addT
         <span className="discount-badge">{discount}% Off</span>
       )}
 
-      {addToWishlist && (
-        <button
-          className="wishlist-icon"
-          title="Add to Wishlist"
-          onClick={(e) => {
-            e.stopPropagation(); // Prevent navigation when clicking wishlist
-            addToWishlist(item);
-          }}
-        >
-          ♥
-        </button>
-      )}
+      <button
+        className="wishlist-icon"
+        title="Add to Wishlist"
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsClicked(!isClicked);
+          addToWishlist(item);
+        }}
+        style={{ color: isClicked ? "red" : "gray" }}
+      >
+        <FaHeart />
+      </button>
 
       <img src={item.imgUrl} alt={item.productName} className="product-img" />
       <h3>{item.productName}</h3>
